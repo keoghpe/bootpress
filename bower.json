@@ -1,0 +1,16 @@
+{
+  "name": "bootpress",
+  "version": "0.0.0",
+  "authors": [
+    "keoghpe@tcd.ie <keoghpe@tcd.ie>"
+  ],
+  "description": "An opinionated wordpress starter theme based on underscores and bootstrap",
+  "license": "GNU GPL v2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
