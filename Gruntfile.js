@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     },
     watch: {
       sass: {
-        files: ['sass/**/*.scss'],
+        files: ['./**/*.scss'],
         tasks: ['sass:dev'],
         options: {
           livereload: 35729
