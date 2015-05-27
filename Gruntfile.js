@@ -3,10 +3,16 @@
 // bootstrap
 // livereload
 // wiredep
-// 
+//
 
 
 module.exports = function(grunt) {
+
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
+
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     jshint: {
@@ -18,14 +24,50 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      sass: {
+        files: ['sass/**/*.scss'],
+        tasks: ['sass:dev'],
+        options: {
+          livereload: 35729
+        }
+      },
+      php: {
+        files: ['**/*.php'],
+        options: {
+          livereload: 35729
+        }
+      },
+      js: {
+        files: ['<%= jshint.files %>'],
+        tasks: ['jshint'],
+        options: {
+          livereload: 35729
+        }
+      }
+    },
+    sass: {
+      options: {
+        sourceMap: true,
+        includePaths: ['bower_components']
+        },
+      dev: {
+        files: [
+          {
+            src: ['**/*.scss'],
+            cwd: 'sass',
+            dest: '.',
+            ext: '.css',
+            expand: true
+          }
+        ],
+        options: {
+          style: 'expanded',
+          compass: true
+        }
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['watch']);
 
 };
