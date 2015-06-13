@@ -33,7 +33,7 @@ function _s_setup() {
 	 * provide it for us.
 	 */
 	add_theme_support( 'title-tag' );
-
+	add_theme_support( 'post-thumbnails' ); 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
@@ -105,12 +105,15 @@ add_action( 'widgets_init', '_s_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _s_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+	//wp_enqueue_style( '_s-style', get_stylesheet_uri() );
 
 	if(true){
 		wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
 		wp_enqueue_script('livereload');
 	}
+
+	wp_register_script('main',  get_stylesheet_directory_uri() . '/main.js');
+	wp_enqueue_script('main');
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );
 

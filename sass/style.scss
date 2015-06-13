@@ -1,4 +1,4 @@
-/*
+/* tht
 Theme Name: _s
 Theme URI: http://underscores.me/
 Author: Automattic
@@ -20,3 +20,24 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 @import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+h1, h2, h3, h4 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.site-title {
+  font-size: 100px;
+}
+
+.site-description {
+  font-style: italic;
+  //color: $brand-primary;
+
+  &:before{
+    content: "\201C";
+  }
+
+  &:after{
+    content: "\201D";
+  }
+}
