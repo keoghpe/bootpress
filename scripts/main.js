@@ -4,4 +4,4 @@ var b = new B();
 
 b.methodB("sup");
 
-console.log("more stuff");
+console.log("more    stuff");

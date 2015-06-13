@@ -23,6 +23,8 @@
     "gulp-util": "^3.0.5",
     "gulp-watch": "^4.2.4",
     "load-grunt-tasks": "^3.2.0",
+    "lodash": "^3.9.3",
+    "lodash.assign": "^3.2.0",
     "main-bower-files": "^2.8.0",
     "time-grunt": "^1.2.1",
     "vinyl-buffer": "^1.0.0",
