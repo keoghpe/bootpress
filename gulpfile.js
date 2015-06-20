@@ -117,21 +117,23 @@ gulp.task('email', function () {
 
 gulp.task('deploy', function() {
 
-  // var conn = ftp.create( ftpconfig );
+  var conn = ftp.create( ftpconfig );
 
-  // var globs = [
-  //     'src/**',
-  //     'css/**',
-  //     'js/**',
-  //     'fonts/**',
-  //     'index.html'
-  // ];
+  var globs = [
+      '**/*.php',
+      '*.php',
+      'main.js',
+      'style.css',
+      'js/**',
+      'fonts/**',
+      'index.html'
+  ];
 
   // using base = '.' will transfer everything to /public_html correctly
   // turn off buffering in gulp.src for best performance
 
-  // return gulp.src( globs, { base: '.', buffer: false } )
-  //     .pipe( conn.newer( '/public_html' ) ) // only upload newer files
-  //     .pipe( conn.dest( '/public_html' ) );
+  return gulp.src( globs, { base: '.', buffer: false } )
+      .pipe( conn.newer( '/public_html' ) ) // only upload newer files
+      .pipe( conn.dest( '/public_html' ) );
 
 });

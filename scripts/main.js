@@ -1,5 +1,4 @@
 import B from './mymod.js';
-import $ from 'jquery';
 import bootstrap from 'bootstrap';
 
 
