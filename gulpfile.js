@@ -16,7 +16,9 @@ var gulp = require('gulp'),
   watchify = require('watchify'),
   debowerify = require('debowerify'),
   gutil = require('gulp-util'),
-  assign = require('lodash.assign');
+  assign = require('lodash.assign'),
+  Pageres = require('pageres'),
+  zip = require('gulp-zip');
 
 // Run `gulp js` to watch javascript and livereload
 
@@ -70,6 +72,48 @@ gulp.task('watch-sass', function() {
 gulp.task('default', function() {
   // default does nothing right now
 });
+
+// Take screenshots
+
+gulp.task('screenshots', function(){
+
+  var pageres = new Pageres({delay: 2})
+        .src('sandbox.dev:8080/peterspub/', ['480x320', 'iphone 5s'], {crop: true})
+        .dest('./site-screenshots');
+
+    pageres.run(function (err) {
+        if (err) {
+            throw err;
+        }
+
+        return gulp.src('site-screenshots/*')
+        .pipe(zip('archive.zip'))
+        .pipe(gulp.dest('.'));
+    });
+
+
+});
+
+gulp.task('email', function () {
+
+  var api_key = 'key-a5a60ee2b76926c25bb8ba4dd4cac02a';
+  var domain = 'https://api.mailgun.net/v3/sandboxf85e16525f8b40749c122c7b62fe8fd5.mailgun.org/messages';
+  var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+  var date = new Date();
+
+  var data = {
+    from: 'Excited User <mailgun@sandboxf85e16525f8b40749c122c7b62fe8fd5.mailgun.org>',
+    to: 'peterkeoghdev@gmail.com',
+    subject: 'Screenshots' + date.toString(),
+    text: 'Testing some Mailgun awesomness!',
+    attachment: './archive.zip'
+  };
+
+  mailgun.messages().send(data, function (error, body) {
+    console.log(body);
+  });
+});
+
 
 gulp.task('deploy', function() {
 
