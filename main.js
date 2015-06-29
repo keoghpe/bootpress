@@ -11356,11 +11356,9 @@ var _bootstrap = require('bootstrap');
 
 var _bootstrap2 = _interopRequireDefault(_bootstrap);
 
-console.log(_bootstrap2['default']);
-
 var b = new _mymodJs2['default']();
 
-b.methodB();
+b.methodB('hello');
 
 },{"./../bower_components/jquery/dist/jquery.js":2,"./mymod.js":5,"bootstrap":1}],5:[function(require,module,exports){
 "use strict";
@@ -11396,7 +11394,7 @@ var B = (function () {
 			});
 
 			p.then(function () {
-				(0, _jquery2["default"])("h1").html("\n\t\t\t\tThis is " + message + " by JQuery\n\t\t\t\t<i>Things<i/>\n\t\t\t\t");
+				(0, _jquery2["default"])("h1").html("\n\t\t\t\tHely\n\t\t\t\tThis is " + message + " by JQuery\n\t\t\t\t<i>Things<i/>\n\t\t\t\t");
 			});
 		}
 	}]);

@@ -11,6 +11,7 @@ class B {
 
 		p.then(() => {
 			$("h1").html(`
+				Hely
 				This is ${message} by JQuery
 				<i>Things<i/>
 				`);
